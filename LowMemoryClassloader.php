@@ -20,7 +20,7 @@ class LowMemoryClassloader
     private $prefixes = array();
 
     function __construct() {
-        $filepath = dirname(dirname(dirname(__DIR__))).'/composer/autoload_namespaces.php';
+        $filepath = dirname(dirname(__DIR__)).'/composer/autoload_namespaces.php';
         $map = require $filepath;
 
         foreach ($map as $namespace => $path) {
@@ -120,7 +120,7 @@ class LowMemoryClassloader
         
         //Didn't find it - might be a classmap
         if ($this->classMap == null) {
-            $filepath = dirname(dirname(dirname(__DIR__))).'/composer/autoload_classmap.php';
+            $filepath = dirname(dirname(__DIR__)).'/composer/autoload_classmap.php';
             $this->classMap = require $filepath;
         }
 
