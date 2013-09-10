@@ -13,6 +13,7 @@ After running `composer--optimize-autoloader update` on my current project, the 
 
 Although sort of optimization for figuring out where the files for classes exist is needed (as file_exists() calls are too darn slow, and must be avoided at all costs) we really ought to do better than using up that much memory.
 
+Also, Composer does not cache where the files for classes are that it doesn't install. E.g. all generated classes that you use in a project have a `file_exists()` call made for each request. The LowMemoryClassloader caches this away.
 
 How it works
 ============
@@ -41,3 +42,7 @@ Behaviour difference to Composer
 
 The only known difference in behaviour to the Composer autoloader is that when the LowMemoryClassloader fails to load the file for a class, it does not cache that fact, and will try to find the class again, on the next attempt to load it. This is the correct behaviour IMHO, as it makes runtime code generation be easier to handle.
  
+TODO
+====
+
+* Benchmark this compared to the classloader than ships with Composer. This should be significantly faster on machines that are under at least a medium amount of load. It will definitely be faster for applications that use dynamically generated classes which have a high overhead with Composer's classloader.
