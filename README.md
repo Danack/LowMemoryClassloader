@@ -29,17 +29,11 @@ The LowMemoryClassloader requires you to use my fork of OPCache from https://git
 How you use it
 ==============
 
-1. Compile in the modified version of OPCache.
+* Compile in the modified version of OPCache.
 
-2. In your PHP script wherever you include the Composer classloader: 
+* In your PHP script wherever you include the Composer classloader `require_once('../vendor/autoload.php');` replace it with the LowMemoryClassLoader `require_once('../vendor/intahwebz/lowmemoryclassloader/LowMemoryClassloader.php');`
 
-    require_once('../vendor/autoload.php');
-    
-replace it with the LowMemoryClassLoader:
-
-    require_once('../vendor/intahwebz/lowmemoryclassloader/LowMemoryClassloader.php');
-    
-3. There is no step 3.
+* That's it.
 
 
 Behaviour difference to Composer
