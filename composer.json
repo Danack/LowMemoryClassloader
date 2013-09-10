@@ -1,0 +1,11 @@
+{
+    "name": "intahwebz/lowmemoryclassloader",
+    "description": "A PHP class loader that uses a minimal amount of memory.",
+    "keywords": ["classloader", "autoloader", "optimized"],
+    "authors": [
+        {
+            "name": "Dan Ackroyd",
+            "email": "Danack@basereality.com"
+        }
+    ]
+}
