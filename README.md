@@ -11,7 +11,7 @@ I'm an ex-video games developer. I can't stand seeing huge chunks of memory bein
 
 After running `composer--optimize-autoloader update` on my current project, the 'optimised' version of the class loader looks like this: http://pastebin.com/Xa1ii7PY which quite frankly appalls. It takes up 645kB of memory, which is about 30% of the memory needed to display a page in the framework I use.
 
-Although sort of optimization for figuring out where the files for classes exist is needed (as file_exists() calls are too darn slow, and must be avoided at all costs) we really ought to do better than using up that much memory.
+Although some sort of optimization for figuring out where the files for classes exist is needed (as file_exists() calls are too darn slow, and must be avoided at all costs) we really ought to do better than using up that much memory.
 
 Also, Composer does not cache where the files for classes are that it doesn't install. E.g. all generated classes that you use in a project have a `file_exists()` call made for each request. The LowMemoryClassloader caches this away.
 
@@ -45,4 +45,6 @@ The only known difference in behaviour to the Composer autoloader is that when t
 TODO
 ====
 
-* Benchmark this compared to the classloader than ships with Composer. This should be significantly faster on machines that are under at least a medium amount of load. It will definitely be faster for applications that use dynamically generated classes which have a high overhead with Composer's classloader.
+Benchmark this compared to the classloader that ships with Composer. It should be significantly faster on machines that are under at least a medium amount of load. It will definitely be faster for applications that use dynamically generated classes which have a high overhead with Composer's classloader.
+
+However I'm running PHP5.5 in a VM on my laptop, and it's performance is wildly divergent from a real server, so I'm not going to say any benchmarks which I know are unreliable.
