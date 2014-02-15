@@ -103,7 +103,7 @@ class LowMemoryClassloader
                 if (0 === strpos($class, $prefix)) {
                     foreach ($dirs as $dir) {
                         $filename = $dir.DIRECTORY_SEPARATOR.$classPath;
-                        if (opcache_script_cached($filename) == true) {
+                        if (opcache_is_script_cached($filename) == true) {
                             return $filename;
                         }
                     }
